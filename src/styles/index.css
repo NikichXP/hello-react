@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.my-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.my-table th,
+.my-table td {
+  border: 1px solid black;
+  padding: 10px;
+}

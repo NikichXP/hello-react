@@ -1,18 +1,20 @@
 const TableHeaderRow = (payload) => {
     return (<thead>
-    <tr>
+    <tr key="stat-header">
         <th>Metric\Group</th>
-        {payload.header.map(h => (<th>{h}</th>))}
+        {payload.header.map(h => (<th key={h}>{h}</th>))}
     </tr>
     </thead>)
 }
 
-const TableRow = (payload) => {
-    return payload.data.map((data) =>
-        (<tr>
-            {data.map(el => <td>{el}</td>)}
-        </tr>)
-    )
+const TableBody = (payload) => {
+    let cell = 0
+    let rowId = 0
+    return (<tbody>{payload.data.map(data =>
+        <tr key={rowId++}>
+            {data.map(el => <td key={"el-" + cell++}>{el}</td>)}
+        </tr>)}
+    </tbody>)
 }
 
 export function StatusTable(content) {
@@ -20,9 +22,9 @@ export function StatusTable(content) {
     let data = content.data
 
     return (
-        <table class="striped">
+        <table className="my-table">
             <TableHeaderRow header={headers}/>
-            <TableRow data={data}/>
+            <TableBody data={data}/>
         </table>
     )
 }
