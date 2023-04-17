@@ -1,5 +1,3 @@
-import {transformStatusData} from "./statusUtils";
-
 const TableHeaderRow = (payload) => {
     return (<thead>
     <tr>

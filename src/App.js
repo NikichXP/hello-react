@@ -1,7 +1,7 @@
 import './App.css';
 import {useState} from 'react';
 import {getHeaders, transformStatusData} from "./statusUtils";
-import {StatusTable} from "./StatusTable";
+import {StatusTable} from "./components/StatusTable";
 
 function App() {
     const [data, setData] = useState(null);
