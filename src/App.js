@@ -2,6 +2,7 @@ import './styles/App.css';
 import {useState} from 'react';
 import {getHeaders, transformStatusData} from "./statusUtils";
 import {StatusTable} from "./components/StatusTable";
+import {SidebarToggle} from "./components/Sidebar";
 
 function App() {
     const [data, setData] = useState(null);
@@ -15,10 +16,13 @@ function App() {
     };
 
     return (
-        <div>
-            <h1>Welcome</h1>
-            <button onClick={updateData}>Update</button>
-            {data && <StatusTable headers={headers} data={data}/>}
+        <div className="container">
+            <SidebarToggle/>
+            <div className="content">
+                <h1>Welcome</h1>
+                <button onClick={updateData}>Update</button>
+                {data && <StatusTable headers={headers} data={data}/>}
+            </div>
         </div>
     );
 }
