@@ -1,13 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import menu from '../menu.png';
 
 function SidebarMenu(payload) {
 
-    let clickHandler = payload.handler
-    let status = payload.status
+    let display = payload.display
 
-    return (<div className={`sidenav ${status ? 'active' : 'inactive'}`}>
-        <button onClick={clickHandler}>Close</button>
+    return (<div className='sidebar-content' style={{display: display}}>
+        <button>Close</button>
         <br/>
         <ul>
             <li>Item 1</li>
@@ -17,20 +16,49 @@ function SidebarMenu(payload) {
     </div>)
 }
 
-export function SidebarToggle() {
+export function Sidebar() {
 
-    const [showSidebar, setShowSidebar] = useState(false);
-    const clickHandler = () => {
-        setShowSidebar(!showSidebar)
+    const [hover, setHover] = useState(false)
+    const [display, setDisplay] = useState('none')
+    const className = 'sidebar-container'
+
+    useEffect(() => {
+        let timer
+
+        if (!hover) {
+            timer = setTimeout(() => {
+                setDisplay('none')
+            }, 700)
+        }
+
+        return () => clearTimeout(timer)
+    }, [!hover])
+
+    function handleTransition(e) {
+        console.log(e)
+        if (e.target.className === className) {
+            if (hover) {
+                setDisplay('block')
+            } else {
+                setDisplay('none')
+            }
+        }
+    }
+
+    function onMouseEnter() {
+        setHover(true)
+    }
+
+    function onMouseExit() {
+        setHover(false)
     }
 
     return (
-        <div>
-            <div className="sidebar-menu">
+        <div onTransitionEnd={handleTransition} onMouseEnter={onMouseEnter} onMouseLeave={onMouseExit}
+             className={className}>
                 sidenav<br/>
-                <img src={menu} alt={"Menu"} onClick={clickHandler}/>
-            </div>
-            {showSidebar && <SidebarMenu handler={clickHandler} status={showSidebar}/>}
+                <img src={menu} alt={"Menu"}/>
+            <SidebarMenu display={display}/>
         </div>
     );
 }

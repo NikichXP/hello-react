@@ -18,11 +18,22 @@ body {
   align-items: flex-start;
 }
 
-.sidebar-menu {
+.sidebar-container {
   float: left;
-  //width: 50px;
+  width: 50px;
   padding: 15px;
+  background: $bg-color;
   box-sizing: border-box;
+  transition: width 0.5s ease 0.7s;
+
+  &:hover {
+    width: 300px;
+    transition: width 0.5s ease;
+  }
+}
+
+.sidebar-content {
+  transition: display 0.5s;
 }
 
 .content {
@@ -30,24 +41,6 @@ body {
   clear: both;
   box-sizing: border-box;
   padding: 25px;
-}
-
-.sidenav {
-  position: fixed;
-  left: -250px;
-  top: 0;
-  width: 250px;
-  height: 100%;
-  padding: 25px;
-  background-color: rgba(0, 0, 0, 0.5);
-
-  &.inactive {
-    left: -250px;
-  }
-
-  &.active {
-    left: 0;
-  }
 }
 
 table {

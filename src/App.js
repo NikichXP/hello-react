@@ -2,7 +2,7 @@ import './styles/App.css';
 import {useState} from 'react';
 import {getHeaders, transformStatusData} from "./statusUtils";
 import {StatusTable} from "./components/StatusTable";
-import {SidebarToggle} from "./components/Sidebar";
+import {Sidebar} from "./components/Sidebar";
 
 function App() {
     const [data, setData] = useState(null);
@@ -17,7 +17,7 @@ function App() {
 
     return (
         <div className="container">
-            <SidebarToggle/>
+            <Sidebar/>
             <div className="content">
                 <h1>Welcome</h1>
                 <button onClick={updateData}>Update</button>
