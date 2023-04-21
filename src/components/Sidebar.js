@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import menu from '../menu.png';
+import {Link, Outlet} from "react-router-dom";
 
 function SidebarMenu(payload) {
 
@@ -9,9 +10,8 @@ function SidebarMenu(payload) {
         <button>Close</button>
         <br/>
         <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/foo">Foo</Link></li>
         </ul>
     </div>)
 }

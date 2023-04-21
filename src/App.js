@@ -1,28 +1,27 @@
 import './styles/App.css';
-import {useState} from 'react';
-import {getHeaders, transformStatusData} from "./statusUtils";
-import {StatusTable} from "./components/StatusTable";
+import {StatusPage} from './components/StatusPage'
 import {Sidebar} from "./components/Sidebar";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {ChartsPage} from "./components/ChartsPage";
 
 function App() {
-    const [data, setData] = useState(null);
-    const [headers, setHeaders] = useState(null)
 
-    const updateData = async () => {
-        const response = await fetch('https://route.nikichxp.xyz/status')
-        const json = await response.json()
-        setData(transformStatusData(json))
-        setHeaders(getHeaders(json))
-    };
+    function FooBar() {
+        return <div><h1>FOO BAR</h1></div>
+    }
 
     return (
         <div className="container">
-            <Sidebar/>
-            <div className="content">
-                <h1>Welcome</h1>
-                <button onClick={updateData}>Update</button>
-                {data && <StatusTable headers={headers} data={data}/>}
-            </div>
+            <BrowserRouter>
+                <Sidebar/>
+                <div className="content">
+                    <Routes>
+                        <Route index element={<StatusPage/>}/>
+                        <Route path="foo" element={<FooBar/>}/>
+                        <Route path="charts" element={<ChartsPage/>}/>
+                    </Routes>
+                </div>
+            </BrowserRouter>
         </div>
     );
 }
