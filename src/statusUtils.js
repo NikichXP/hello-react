@@ -3,7 +3,7 @@ let getKeyFrom = (json) => {
 }
 
 export function transformStatusData(data) {
-    let events = data.metrics.events
+    let events = data.metrics.intensity
     let keys = getKeyFrom(events.total)
     let groups = getKeyFrom(events)
 
@@ -20,5 +20,5 @@ export function transformStatusData(data) {
 }
 
 export function getHeaders(data) {
-    return getKeyFrom(data.metrics.events)
+    return getKeyFrom(data.metrics.intensity)
 }
