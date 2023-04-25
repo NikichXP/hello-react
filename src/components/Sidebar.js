@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import menu from '../menu.png';
-import {Link, Outlet} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 function SidebarMenu(payload) {
 

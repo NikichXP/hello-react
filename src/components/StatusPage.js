@@ -8,6 +8,12 @@ export function StatusPage() {
     const [headers, setHeaders] = useState(null)
     const [activeRequest, setActiveRequest] = useState(false)
 
+    function getTrend(prev, actual) {
+        return (actual > prev) ? 'up'
+            : (actual < prev) ? 'down'
+                : 'stable'
+    }
+
     function processTableData(json) {
         let rawData = transformStatusData(json)
         if (headers == null) {
@@ -19,19 +25,21 @@ export function StatusPage() {
             })))
         } else {
             let result = []
-            for (let i = 0; i < rawData.length; i++) {
+            rawData.forEach((rawArr, i) => {
                 let array = []
-                array.push({value: rawData[i][0], trend: 'stable'})
-                for (let j = 1; j < rawData[i].length; j++) {
-                    let newVal = rawData[i][j]
+                // element 0 - name
+                // element 1 - total
+                // element 2 - recent
+                array.push({value: rawArr[0], trend: 'stable'})
+
+                rawArr.slice(1).forEach((newVal, j) => {
                     array.push({
-                        trend: (newVal > data[i][j].value) ? 'up' :
-                            (newVal < data[i][j].value) ? 'down' : 'stable',
+                        trend: getTrend(data[i][j].value, newVal),
                         value: newVal
                     })
-                }
+                })
                 result.push(array)
-            }
+            })
             setData(result)
         }
     }
