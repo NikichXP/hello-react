@@ -3,23 +3,31 @@ import {getHeaders, transformStatusData} from "../statusUtils";
 const data = {
     "metrics": {
         "events": {
-            "intensity": {
-                "a": 1,
-                "b": 2,
-                "c": 3,
-                "d": 4
-            },
             "recent": {
-                "a": 10,
-                "b": 20,
-                "c": 30,
-                "d": 40
+                "a": 0,
+                "b": 15,
+                "c": 25,
+                "d": 20
             },
             "total": {
                 "a": 100,
-                "b": 200,
-                "c": 300,
-                "d": 400
+                "b": 1500,
+                "c": 2500,
+                "d": 2000
+            }
+        },
+        "intensity": {
+            "total": {
+                "a": 0.0,
+                "b": 11.1,
+                "c": 11.2,
+                "d": 5.0
+            },
+            "recent": {
+                "a": 0.0,
+                "b": 11.0,
+                "c": 11.5,
+                "d": 5.5
             }
         }
     }
