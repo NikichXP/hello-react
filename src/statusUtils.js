@@ -7,16 +7,17 @@ export function transformStatusData(data) {
     let keys = getKeyFrom(events.total)
     let groups = getKeyFrom(events)
 
-    let tableData = []
+    let result = {}
 
     keys.forEach(key => {
-        let res = []
-        res[0] = key
-        groups.map(group => events[group][key]).forEach(entry => res.push(entry))
-        tableData.push(res)
+        let res = {}
+        groups.forEach(group => {
+            res[group] = events[group][key]
+        })
+        result[key] = res
     })
 
-    return tableData
+    return result
 }
 
 export function getHeaders(data) {

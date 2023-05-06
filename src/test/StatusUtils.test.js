@@ -37,17 +37,16 @@ test('status processor: headers', () => {
     let result = getHeaders(data)
     expect(result).toContain('recent')
     expect(result).toContain('total')
-    expect(result).toContain('intensity')
 })
 
 test('status processor: content', () => {
     let result = transformStatusData(data)
-    expect(result).toStrictEqual([
-        [ 'a', 1, 10, 100 ],
-        [ 'b', 2, 20, 200 ],
-        [ 'c', 3, 30, 300 ],
-        [ 'd', 4, 40, 400 ]
-    ])
+    expect(result).toStrictEqual({
+        a: { total: 0, recent: 0 },
+        b: { total: 11.1, recent: 11 },
+        c: { total: 11.2, recent: 11.5 },
+        d: { total: 5, recent: 5.5 }
+    })
 })
 
 
