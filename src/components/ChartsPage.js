@@ -1,5 +1,7 @@
-import {LineChart, Line, ResponsiveContainer, CartesianGrid, XAxis, YAxis, Tooltip, Legend} from 'recharts'
+import {LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend} from 'recharts'
 import {useEffect, useState} from "react";
+
+const grouping = 10
 
 async function getChartIds() {
     return fetch('https://route.nikichxp.xyz/charts/list')
@@ -13,7 +15,7 @@ export function ChartsPage() {
     const [src, setSrc] = useState([1])
 
     const fetchChartData = () => {
-        fetch('https://route.nikichxp.xyz/charts/ROUTE_OK?grouping=10')
+        fetch('https://route.nikichxp.xyz/charts/ROUTE_OK?grouping=' + grouping)
             .then(response => response.json())
             .then(json => setSrc(json.chartData))
     }
