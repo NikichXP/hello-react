@@ -12,6 +12,7 @@ function SidebarMenu(payload) {
         <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/foo">Foo</Link></li>
+            <li><Link to="/charts">Charts</Link></li>
         </ul>
     </div>)
 }

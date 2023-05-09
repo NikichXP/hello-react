@@ -8,12 +8,6 @@ export function StatusPage() {
     const [headers, setHeaders] = useState(null)
     const [activeRequest, setActiveRequest] = useState(false)
 
-    function getTrend(prev, actual) {
-        return (actual > prev) ? 'up'
-            : (actual < prev) ? 'down'
-                : 'stable'
-    }
-
     function processTableData(json) {
         let rawData = transformStatusData(json)
         if (headers == null) {
@@ -71,7 +65,7 @@ export function StatusPage() {
 
 
     return <div>
-        <h1>Welcome</h1>
+        <h1>Welcome</h1><br/>
         <button onClick={updateData}>Update</button>
         {data && <StatusTable headers={headers} data={data}/>}
     </div>
